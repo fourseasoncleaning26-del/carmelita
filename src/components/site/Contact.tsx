@@ -12,8 +12,10 @@ const schema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Enter a valid email").max(255),
   phone: z.string().trim().min(7, "Enter a valid phone").max(30),
-  message: z.string().trim().min(5, "Tell us a little more").max(1000),
+  service: z.string().trim().min(1, "Please select a service type"),
+  botcheck: z.any().optional(),
 });
+
 
 export function Contact() {
   useScrollReveal();
@@ -27,6 +29,12 @@ export function Contact() {
 
     const fd = new FormData(e.currentTarget);
     const data = Object.fromEntries(fd.entries());
+
+    if (data.botcheck) {
+      setSent(true);
+      return;
+    }
+
     const r = schema.safeParse(data);
     if (!r.success) {
       const errs: Record<string, string> = {};
@@ -125,24 +133,43 @@ export function Contact() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="sm:col-span-1">
                   <label className="text-sm font-semibold text-primary">Full Name</label>
-                  <Input name="name" placeholder="Jane Doe" className="mt-2 h-12 rounded-xl" />
+                  <Input name="name" placeholder="Jane Doe" required className="mt-2 h-12 rounded-xl" />
                   {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                 </div>
                 <div>
                   <label className="text-sm font-semibold text-primary">Phone</label>
-                  <Input name="phone" placeholder="+1 (205) 545-1327" className="mt-2 h-12 rounded-xl" />
+                  <Input name="phone" placeholder="+1 (205) 545-1327" required className="mt-2 h-12 rounded-xl" />
                   {errors.phone && <p className="mt-1 text-xs text-destructive">{errors.phone}</p>}
                 </div>
                 <div className="sm:col-span-2">
                   <label className="text-sm font-semibold text-primary">Email</label>
-                  <Input name="email" type="email" placeholder="you@email.com" className="mt-2 h-12 rounded-xl" />
+                  <Input name="email" type="email" placeholder="you@email.com" required className="mt-2 h-12 rounded-xl" />
                   {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="text-sm font-semibold text-primary">How can we help?</label>
-                  <Textarea name="message" placeholder="Tell us about your space, type of service, and preferred dates." rows={5} className="mt-2 rounded-xl" />
-                  {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+                  <label className="text-sm font-semibold text-primary">Type of Cleaning Desired</label>
+                  <select
+                    name="service"
+                    required
+                    className="mt-2 block w-full h-12 px-4 rounded-xl border border-border bg-card text-foreground text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    <option value="">Select a service...</option>
+                    <option value="Standard Cleaning">Standard Cleaning</option>
+                    <option value="Deep Cleaning">Deep Cleaning</option>
+                    <option value="Move-In / Move-Out">Move-In / Move-Out</option>
+                    <option value="Apartment Cleaning">Apartment Cleaning</option>
+                    <option value="Office Cleaning">Office Cleaning</option>
+                    <option value="Post-Construction">Post-Construction</option>
+                  </select>
+                  {errors.service && <p className="mt-1 text-xs text-destructive">{errors.service}</p>}
                 </div>
+                {/* Honeypot field to block spam bots */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  style={{ display: "none" }}
+                />
                 <div className="sm:col-span-2">
                   <Button type="submit" variant="cta" size="xl" className="w-full sm:w-auto" disabled={loading}>
                     {loading ? (
