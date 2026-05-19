@@ -80,7 +80,17 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row gap-3 items-center justify-between text-xs text-white/60">
-          <div>© {new Date().getFullYear()} Four Season Cleaning Services. All rights reserved.</div>
+          <div>
+            © {new Date().getFullYear()} Four Season Cleaning Services. All rights reserved. |{" "}
+            <a
+              href="https://agenciaadcompany.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors font-medium underline"
+            >
+              Created by AD Company
+            </a>
+          </div>
           <div className="flex gap-5">
             <a href="#" className="hover:text-white">Privacy</a>
             <a href="#" className="hover:text-white">Terms</a>
