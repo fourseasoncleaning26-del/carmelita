@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { z } from "zod";
-import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { toast } from "sonner";
+
 
 const schema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -17,9 +19,12 @@ export function Contact() {
   useScrollReveal();
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (loading) return;
+
     const fd = new FormData(e.currentTarget);
     const data = Object.fromEntries(fd.entries());
     const r = schema.safeParse(data);
@@ -30,7 +35,36 @@ export function Contact() {
       return;
     }
     setErrors({});
-    setSent(true);
+    setLoading(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "22c9ac68-c178-47c2-8768-8f7d4c887a4d",
+          subject: "New Estimate Request - Four Season Cleaning",
+          from_name: "Four Season Cleaning Website",
+          ...data,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSent(true);
+        toast.success("Quote request sent successfully!");
+      } else {
+        toast.error(result.message || "Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      console.error("Form submit error:", err);
+      toast.error("An error occurred. Please call us directly.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -110,8 +144,13 @@ export function Contact() {
                   {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
                 </div>
                 <div className="sm:col-span-2">
-                  <Button type="submit" variant="cta" size="xl" className="w-full sm:w-auto">
-                    <Send className="h-4 w-4" /> Request Free Quote
+                  <Button type="submit" variant="cta" size="xl" className="w-full sm:w-auto" disabled={loading}>
+                    {loading ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Send className="h-4 w-4" />
+                    )}
+                    {loading ? "Sending..." : "Request Free Quote"}
                   </Button>
                 </div>
               </div>
