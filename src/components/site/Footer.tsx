@@ -1,4 +1,5 @@
-import { Sparkles, Facebook, Instagram, Twitter, Phone, Mail, MapPin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Phone, Mail, MapPin } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -6,9 +7,11 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
           <div className="flex items-center gap-2">
-            <span className="grid place-items-center h-10 w-10 rounded-full bg-primary-light">
-              <Sparkles className="h-5 w-5" />
-            </span>
+            <img
+              src={logoImg}
+              alt="Four Season Logo"
+              className="h-10 w-10 object-contain rounded-full shadow-soft"
+            />
             <span className="font-display font-semibold text-lg leading-tight">
               Four Season
               <span className="block text-[11px] tracking-widest uppercase opacity-70 font-sans">Cleaning Services</span>

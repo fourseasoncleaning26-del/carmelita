@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { Menu, Phone, X, Sparkles } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoImg from "@/assets/logo.png";
+
 
 const links = [
   { href: "#home", label: "Home" },
@@ -33,9 +35,11 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-18 py-3">
         <a href="#home" className="flex items-center gap-2 group">
-          <span className="grid place-items-center h-10 w-10 rounded-full bg-primary text-primary-foreground shadow-soft">
-            <Sparkles className="h-5 w-5" />
-          </span>
+          <img
+            src={logoImg}
+            alt="Four Season Logo"
+            className="h-10 w-10 object-contain rounded-full shadow-soft"
+          />
           <span className={`font-display font-semibold text-lg leading-tight ${scrolled ? "text-primary" : "text-white"}`}>
             Four Season
             <span className="block text-[11px] tracking-widest uppercase opacity-80 font-sans">Cleaning Services</span>
