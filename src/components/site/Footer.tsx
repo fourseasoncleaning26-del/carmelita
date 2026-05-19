@@ -62,8 +62,14 @@ export function Footer() {
         <div>
           <h4 className="font-display text-lg mb-5">Get in Touch</h4>
           <ul className="space-y-4 text-sm text-white/80">
-            <li className="flex items-start gap-3"><Phone className="h-4 w-4 mt-0.5 text-primary-light" /> (555) 123-4567</li>
-            <li className="flex items-start gap-3"><Mail className="h-4 w-4 mt-0.5 text-primary-light" /> hello@fourseasoncleaning.com</li>
+            <li className="flex items-start gap-3">
+              <Phone className="h-4 w-4 mt-0.5 text-primary-light" />
+              <a href="tel:+12055451327" className="hover:text-primary-light transition-colors">+1 (205) 545-1327</a>
+            </li>
+            <li className="flex items-start gap-3">
+              <Mail className="h-4 w-4 mt-0.5 text-primary-light" />
+              <a href="mailto:fourseasoncleaning26@gmail.com" className="hover:text-primary-light transition-colors">fourseasoncleaning26@gmail.com</a>
+            </li>
             <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary-light" /> Serving homes across the U.S.</li>
           </ul>
         </div>

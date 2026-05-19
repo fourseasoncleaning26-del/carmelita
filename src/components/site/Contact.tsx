@@ -49,8 +49,8 @@ export function Contact() {
         <div className="mt-16 grid lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2 space-y-5 animate-on-scroll">
             {[
-              { icon: Phone, title: "Phone", value: "(555) 123-4567", href: "tel:+15551234567" },
-              { icon: Mail, title: "Email", value: "hello@fourseasoncleaning.com", href: "mailto:hello@fourseasoncleaning.com" },
+              { icon: Phone, title: "Phone", value: "+1 (205) 545-1327", href: "tel:+12055451327" },
+              { icon: Mail, title: "Email", value: "fourseasoncleaning26@gmail.com", href: "mailto:fourseasoncleaning26@gmail.com" },
               { icon: MapPin, title: "Service Area", value: "Serving homes across the United States", href: undefined },
             ].map((c) => (
               <a
@@ -96,7 +96,7 @@ export function Contact() {
                 </div>
                 <div>
                   <label className="text-sm font-semibold text-primary">Phone</label>
-                  <Input name="phone" placeholder="(555) 123-4567" className="mt-2 h-12 rounded-xl" />
+                  <Input name="phone" placeholder="+1 (205) 545-1327" className="mt-2 h-12 rounded-xl" />
                   {errors.phone && <p className="mt-1 text-xs text-destructive">{errors.phone}</p>}
                 </div>
                 <div className="sm:col-span-2">

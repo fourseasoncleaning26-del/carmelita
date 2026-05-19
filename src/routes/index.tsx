@@ -8,7 +8,6 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { Gallery } from "@/components/site/Gallery";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
-import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -40,8 +39,8 @@ export const Route = createFileRoute("/")({
           "@type": "LocalBusiness",
           name: "Four Season Cleaning Services",
           description: "Professional residential and commercial cleaning services across the United States.",
-          telephone: "+1-555-123-4567",
-          email: "hello@fourseasoncleaning.com",
+          telephone: "+1 (205) 545-1327",
+          email: "fourseasoncleaning26@gmail.com",
           areaServed: "United States",
           priceRange: "$$",
         }),
@@ -64,7 +63,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
-      <WhatsAppButton />
+
     </div>
   );
 }
