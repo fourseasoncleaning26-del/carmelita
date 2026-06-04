@@ -21,11 +21,17 @@ export function Footer() {
             Premium residential and commercial cleaning, delivered with care across the United States.
           </p>
           <div className="mt-6 flex gap-3">
-            {[Facebook, Instagram, Twitter].map((Icon, i) => (
+            {[
+              { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61590710756715", label: "Facebook" },
+              { Icon: Instagram, href: "https://www.instagram.com/four.seasoncleaning/", label: "Instagram" },
+              { Icon: Twitter, href: "#", label: "Twitter" }
+            ].map(({ Icon, href, label }, i) => (
               <a
                 key={i}
-                href="#"
-                aria-label="Social link"
+                href={href}
+                aria-label={label}
+                target={href !== "#" ? "_blank" : undefined}
+                rel={href !== "#" ? "noopener noreferrer" : undefined}
                 className="grid place-items-center h-10 w-10 rounded-full bg-white/10 hover:bg-primary-light transition-colors"
               >
                 <Icon className="h-4 w-4" />
