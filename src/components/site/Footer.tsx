@@ -18,7 +18,7 @@ export function Footer() {
             </span>
           </div>
           <p className="mt-5 text-white/70 text-sm leading-relaxed">
-            Premium residential and commercial cleaning, delivered with care across the United States.
+            Premium residential and commercial cleaning, delivered with care in Alabaster, AL and surrounding areas.
           </p>
           <div className="mt-6 flex gap-3">
             {[
@@ -79,7 +79,7 @@ export function Footer() {
               <Mail className="h-4 w-4 mt-0.5 text-primary-light" />
               <a href="mailto:fourseasoncleaning26@gmail.com" className="hover:text-primary-light transition-colors">fourseasoncleaning26@gmail.com</a>
             </li>
-            <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary-light" /> Serving homes across the U.S.</li>
+            <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary-light" /> Serving Alabaster, AL and surrounding areas</li>
           </ul>
         </div>
       </div>

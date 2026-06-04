@@ -28,7 +28,7 @@ export function Hero() {
 
           <p className="mt-6 text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed animate-fade-in">
             Reliable, affordable, and detail-oriented cleaning services for homes and apartments
-            across the United States. Sit back and enjoy a sparkling space — we'll handle the rest.
+            in Alabaster, AL and surrounding areas. Sit back and enjoy a sparkling space — we'll handle the rest.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4 animate-fade-in">

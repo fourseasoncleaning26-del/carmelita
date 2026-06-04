@@ -93,7 +93,7 @@ export function Contact() {
             {[
               { icon: Phone, title: "Phone", value: "(205) 475-4223", href: "tel:+12054754223" },
               { icon: Mail, title: "Email", value: "fourseasoncleaning26@gmail.com", href: "mailto:fourseasoncleaning26@gmail.com" },
-              { icon: MapPin, title: "Service Area", value: "Serving homes across the United States", href: undefined },
+              { icon: MapPin, title: "Location", value: "145 Lake Terrace, Alabaster, AL 35007", href: "https://maps.google.com/?q=145+Lake+Terrace,+Alabaster,+AL+35007" },
             ].map((c) => (
               <a
                 key={c.title}
