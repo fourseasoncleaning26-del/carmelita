@@ -36,7 +36,7 @@ export function Hero() {
               <a href="#contact">Get Free Estimate</a>
             </Button>
             <Button asChild variant="outlineWhite" size="xl">
-              <a href="tel:+12054754223" className="flex items-center gap-2">
+              <a href="tel:+12055451327" className="flex items-center gap-2">
                 <Phone className="h-4 w-4" /> Call Now
               </a>
             </Button>

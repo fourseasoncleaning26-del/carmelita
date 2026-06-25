@@ -61,8 +61,8 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+12054754223" className={`flex items-center gap-2 text-sm font-semibold ${scrolled ? "text-primary" : "text-white"}`}>
-            <Phone className="h-4 w-4" /> (205) 475-4223
+          <a href="tel:+12055451327" className={`flex items-center gap-2 text-sm font-semibold ${scrolled ? "text-primary" : "text-white"}`}>
+            <Phone className="h-4 w-4" /> +1 (205) 545-1327
           </a>
           <Button asChild variant="hero" size="lg">
             <a href="#contact">Get Free Estimate</a>
